@@ -2,9 +2,12 @@ package com.anonyper.pluginlibrary;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.AssetManager;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+
+import java.io.File;
 
 /**
  * PluginApplication
@@ -115,5 +118,24 @@ public class PluginActivity extends AppCompatActivity implements IPlugin {
             return proxyActivity.getPackageName();
         }
 
+    }
+
+    @Override
+    public File getDir(String name, int mode) {
+        if (from == FROM_INTERNAL) {
+            return super.getDir(name, mode);
+        } else {
+            return proxyActivity.getDir(name, mode);
+        }
+
+    }
+
+    @Override
+    public AssetManager getAssets() {
+        if (from == FROM_INTERNAL) {
+            return super.getAssets();
+        } else {
+            return proxyActivity.getAssets();
+        }
     }
 }

@@ -17,8 +17,8 @@ class PluginApkActivity : PluginActivity() {
         setContentView(R.layout.activity_plugin_apk)
         findViewById<TextView>(R.id.plugin_activity).setOnClickListener {
             val intent = Intent()
-//            intent.setClass(this@PluginApkActivity, OrderActivity::class.java)
-            intent.action= ACTION_SETTINGS
+            intent.setClass(this@PluginApkActivity, OrderActivity::class.java)
+//            intent.action= ACTION_SETTINGS
             startActivity(intent)
         }
 

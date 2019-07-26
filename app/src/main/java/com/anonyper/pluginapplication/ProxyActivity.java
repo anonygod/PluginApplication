@@ -11,7 +11,10 @@ import com.anonyper.basecomponent.BaseActivity;
 import com.anonyper.pluginlibrary.IPlugin;
 import com.anonyper.pluginlibrary.PluginApk;
 import com.anonyper.pluginlibrary.PluginManager;
+import com.anonyper.utillibrary.FileUtils;
 import com.anonyper.utillibrary.Loger;
+
+import java.io.File;
 
 /**
  * PluginApplication
@@ -69,13 +72,11 @@ public class ProxyActivity extends BaseActivity {
 
     @Override
     public void startActivity(Intent intent) {
-        dealWithIntent(intent);
         super.startActivity(intent);
     }
 
     @Override
     public void startActivityForResult(Intent intent, int requestCode, @Nullable Bundle options) {
-        dealWithIntent(intent);
         super.startActivityForResult(intent, requestCode, options);
     }
 
@@ -117,6 +118,11 @@ public class ProxyActivity extends BaseActivity {
         if (iPlugin != null) {
             iPlugin.onDestroy();
         }
+    }
+
+    @Override
+    public File getCacheDir() {//插件apk没有缓存目录，用宿主apk的
+        return super.getCacheDir();
     }
 
     @Override

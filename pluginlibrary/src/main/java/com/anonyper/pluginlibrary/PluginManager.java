@@ -6,6 +6,7 @@ import android.content.pm.PackageManager;
 import android.content.res.AssetManager;
 import android.content.res.Resources;
 import dalvik.system.DexClassLoader;
+import dalvik.system.PathClassLoader;
 
 import java.io.File;
 import java.lang.reflect.Method;
@@ -63,6 +64,7 @@ public class PluginManager {
 
     //创建classLoader
     private DexClassLoader createDexClassLoader(String apkPath) {
+        PathClassLoader pathClassLoader = null;
         DexClassLoader classLoader = null;
         File file = context.getDir("dex", Context.MODE_PRIVATE);
         classLoader = new DexClassLoader(apkPath, file.getAbsolutePath(), null, context.getClassLoader());
