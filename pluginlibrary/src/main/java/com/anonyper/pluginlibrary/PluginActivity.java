@@ -82,6 +82,14 @@ public class PluginActivity extends AppCompatActivity implements IPlugin {
     }
 
     @Override
+    public Intent getIntent() {
+        if (from == FROM_INTERNAL) {
+            return super.getIntent();
+        }
+        return proxyActivity.getIntent();
+    }
+
+    @Override
     public void startActivity(Intent intent) {
         if (from == FROM_INTERNAL) {
             super.startActivity(intent);

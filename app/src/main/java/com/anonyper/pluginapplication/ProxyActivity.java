@@ -91,6 +91,11 @@ public class ProxyActivity extends BaseActivity {
     }
 
     @Override
+    public Intent getIntent() {
+        return super.getIntent();
+    }
+
+    @Override
     protected void onResume() {
         super.onResume();
         if (iPlugin != null) {
